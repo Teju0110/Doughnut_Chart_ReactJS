@@ -1,23 +1,27 @@
-import logo from './logo.svg';
 import './App.css';
+import { Chart as ChartJS,ArcElement,Tooltip,Legend } from 'chart.js';
+import { Doughnut } from 'react-chartjs-2';
+
+ChartJS.register(ArcElement,Tooltip,Legend)
 
 function App() {
+
+  const data={
+    labels:['Yes','No'],
+    datasets:[{
+      label:'poll',
+      data:[3,6],
+      backgroundColor:['black','red'],
+      borderColor:['black','red']
+    }]
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Doughnut Chart</h1>
+      <div style={{height:"250px", width:"250px"}}>
+      <Doughnut data={data}></Doughnut>
+      </div>
     </div>
   );
 }
